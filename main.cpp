@@ -160,6 +160,7 @@ int main(int argc, char *argv[]){
     // dapt
     if(kind == 5)
     {
+        printf("dapt\n");
         int h0, i0, i1, i2, w0;
         for (int w0 = -1; w0 < floord(n, 16); w0 += 1) {
 #pragma omp parallel for schedule(dynamic, 1) shared(w0) private(h0, i0, i1, i2)
@@ -186,25 +187,34 @@ int main(int argc, char *argv[]){
         for (int c0 = 0; c0 <= floord(N, 4); c0 += 1){
 #pragma omp parallel for
             for (int c1 = c0; c1 <= min(N / 4, (N + 2 * c0 + 2) / 4 - 1); c1 += 1) {
+                int C[4][4] = {0};
                 for (int c3 = -c0 + c1 + 1; c3 < c1; c3 += 1)
                     for (int c4 = max(1, -4 * c0 + 4 * c1); c4 <= -4 * c0 + 4 * c1 + 3; c4 += 1)
+                        for (int c6 = 4 * c3; c6 <= 4 * c3 + 3; c6 += 1)
                         for (int c5 = 4 * c1; c5 <= min(N, 4 * c1 + 3); c5 += 1)
-                            for (int c6 = 4 * c3; c6 <= 4 * c3 + 3; c6 += 1) {
-                                c[c4][c5] = MIN(c[c4][c5], w[c4][c5] + c[c4][c6] + c[c6][c5]);
-                                if (c4 == 1 && c5 == 13)
-                                    printf("\033[0;94m[%d %d] [%d %d]\n", c4,c6, c6, c5);
+                           {
+                              int i = c4 - max(1, -4 * c0 + 4 * c1);
+                              int j = c5 - 4 *c1;
+                              C[i][j] = MIN(c[c4][c5], w[c4][c5] + c[c4][c6] + c[c6][c5]);  // c[c4][c5]
+                              //  if (c4 == 1 && c5 == 13)
+                                 //   printf("\033[0;94m[%d %d] [%d %d]\n", c4,c6, c6, c5);
                             }
                 for (int c4 = max(2, 4 * c0 - 2); c4 <= min(min(min(N - 1, 4 * c0 + 3), N + 4 * c0 - 4 * c1), 4 * c1 + 2); c4 += 1) {
                     if (c0 >= 1) {
                         for (int c5 = max(max(4 * c1, -4 * c0 + 4 * c1 + c4), c4 + 1); c5 <= min(min(N, 4 * c1 + 3), -4 * c0 + 4 * c1 + c4 + 3); c5 += 1) {
                             for (int c6 = -c4 + c5 + 1; c6 <= -4 * c0 + 4 * c1 + 3; c6 += 1) {
-                                if ( -c4+c5 == 1 && c5 == 13)
-                                    printf("\033[0;95m[%d %d] [%d %d] [%d] [%d] [w%d] -> [%d] \n", -c4+c5,c6, c6, c5, c[-c4+c5][c6], c[c6][c5] , w[-c4+c5][c5], c[-c4+c5][c5]);
+                               // if ( -c4+c5 == 1 && c5 == 13)
+                               //     printf("\033[0;95m[%d %d] [%d %d] [%d] [%d] [w%d] -> [%d] \n", -c4+c5,c6, c6, c5, c[-c4+c5][c6], c[c6][c5] , w[-c4+c5][c5], c[-c4+c5][c5]);
                                 c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
+
+                            int i = c4 - max(2, 4 * c0 - 2);
+                            int j = c5 - max(max(4 * c1, -4 * c0 + 4 * c1 + c4), c4 + 1);
+                            c[-c4 + c5][c5] = MIN(C[i][j], c[-c4 + c5][c5]);
+
                             for (int c6 = 4 * c1; c6 < c5; c6 += 1) {
-                                if ( -c4+c5 == 1 && c5 == 13)
-                                    printf("\033[0;93m[%d %d] [%d %d] [%d] [%d] [w%d] -> [%d] \n", -c4+c5,c6, c6, c5, c[-c4+c5][c6], c[c6][c5] , w[-c4+c5][c5], c[-c4+c5][c5]);
+                             //   if ( -c4+c5 == 1 && c5 == 13)
+                              //      printf("\033[0;93m[%d %d] [%d %d] [%d] [%d] [w%d] -> [%d] \n", -c4+c5,c6, c6, c5, c[-c4+c5][c6], c[c6][c5] , w[-c4+c5][c5], c[-c4+c5][c5]);
                                 c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
                         }
