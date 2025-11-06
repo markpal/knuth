@@ -178,12 +178,6 @@ int main(int argc, char *argv[]){
     }
     if(kind == 6)  // ?
     {
-/*
-        for(i=n-1; i>=1; i--)
-            for(j=i+1; j<=n; j++)
-                for(k=0; k<j-i-1; k++)
-                    c[i][j] = MIN(c[i][j], w[i][j]+c[i][k+i+1]+c[k+i+1][j]);
-*/
 
         for (int c0 = 0; c0 <= floord(N, 4); c0 += 1){
         #pragma omp parallel for
