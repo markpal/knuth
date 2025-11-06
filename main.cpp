@@ -21,6 +21,7 @@ int N;
 int DIM;
 
 #include "mem.h"
+#define VEC
 
 int main(int argc, char *argv[]){
 
@@ -48,7 +49,7 @@ int main(int argc, char *argv[]){
         N = atoi(argv[2]);
     DIM = N+10;
     int n = N;
-    int check = 0;
+    int check = 1;
     if(argc > 3)
         kind = atoi(argv[3]);
 
@@ -185,7 +186,7 @@ int main(int argc, char *argv[]){
 */
 
         for (int c0 = 0; c0 <= floord(N, 4); c0 += 1){
-#pragma omp parallel for
+        #pragma omp parallel for
             for (int c1 = c0; c1 <= min(N / 4, (N + 2 * c0 + 2) / 4 - 1); c1 += 1) {
                 int C[4][4];
                 for (int i = 0; i < 4; i++)
@@ -196,37 +197,28 @@ int main(int argc, char *argv[]){
                         for (int c5 = 4 * c1; c5 <= min(N, 4 * c1 + 3); c5 += 1)
                             for (int c6 = 4 * c3; c6 <= 4 * c3 + 3; c6 += 1)
                            {
-                              int i = c4 % 4;
-                              int j = c5 % 4;
-                              C[i][j] = MIN(C[i][j], w[c4][c5] + c[c4][c6] + c[c6][c5]);  // c[c4][c5]
-                              //c[c4][c5] = MIN(c[c4][c5], w[c4][c5] + c[c4][c6] + c[c6][c5]);
-                             //    if (c4 == 3 && c5 == 12)
-                               //     printf("\033[0;94m[%d %d] [%d %d]  %d %d %d\n", c4,c6, c6, c5, C[i][j], -c1+c0, c1);
+                               #ifdef VEC
+                                C[c4 % 4][c5 % 4] = MIN(C[c4 % 4][c5 % 4], w[c4][c5] + c[c4][c6] + c[c6][c5]);  // c[c4][c5]
+                               #else
+                                c[c4][c5] = MIN(c[c4][c5], w[c4][c5] + c[c4][c6] + c[c6][c5]);
+                               #endif
                             }
+                #ifdef VEC
                 if(c0 > 1) {
-                //    printf("!!!! %d %d %d", (-c0 + c1) * 4 + 3, c1 * 4, C[3][0]);
                     c[(-c0 + c1) * 4 + 3][c1 * 4] = C[3][0]; // nie ma problematycznych
                 }
+                #endif
                 for (int c4 = max(2, 4 * c0 - 2); c4 <= min(min(min(N - 1, 4 * c0 + 3), N + 4 * c0 - 4 * c1), 4 * c1 + 2); c4 += 1) {
                     if (c0 >= 1) {
                         for (int c5 = max(max(4 * c1, -4 * c0 + 4 * c1 + c4), c4 + 1); c5 <= min(min(N, 4 * c1 + 3), -4 * c0 + 4 * c1 + c4 + 3); c5 += 1) {
                             for (int c6 = -c4 + c5 + 1; c6 <= -4 * c0 + 4 * c1 + 3; c6 += 1) {
-                             //   if ( -c4+c5 == 3 && c5 == 12)
-                              //      printf("\033[0;95m[%d %d] [%d %d] [%d] [%d] [w%d] -> [%d] \n", -c4+c5,c6, c6, c5, c[-c4+c5][c6], c[c6][c5], w[-c4+c5][c5], c[-c4+c5][c5]);
-                                c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
+                                  c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
-
-                            int i = (-c4 + c5) % 4;
-                            int j = c5 % 4;
-                            c[-c4 + c5][c5] = MIN(C[i][j], c[-c4 + c5][c5]);
-                           // if ( -c4+c5 == 3 && c5 == 12){
-                            //    printf("\033[0;97m %d %d\n", C[i][j], c[-c4 + c5][c5]);
-                            //}
-
+                            #ifdef VEC
+                            c[-c4 + c5][c5] = MIN(C[(-c4 + c5) % 4][c5 % 4], c[-c4 + c5][c5]);
+                            #endif
                             for (int c6 = 4 * c1; c6 < c5; c6 += 1) {
-                            //    if ( -c4+c5 == 3 && c5 == 12)
-                             //       printf("\033[0;93m[%d %d] [%d %d] [%d] [%d] [w%d] -> [%d] \n", -c4+c5,c6, c6, c5, c[-c4+c5][c6], c[c6][c5] , w[-c4+c5][c5], c[-c4+c5][c5]);
-                                c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
+                                 c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
                         }
                     } else {

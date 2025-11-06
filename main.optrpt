@@ -92,88 +92,98 @@ LOOP BEGIN at ./mem.h (14, 5)
 <Remainder loop>
 LOOP END
 
-LOOP BEGIN at main.cpp (63, 5)
+LOOP BEGIN at main.cpp (64, 5)
 
-    LOOP BEGIN at main.cpp (64, 9)
+    LOOP BEGIN at main.cpp (65, 9)
         remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
     LOOP END
 LOOP END
 
-LOOP BEGIN at main.cpp (149, 9)
+LOOP BEGIN at main.cpp (76, 9)
+
+    LOOP BEGIN at main.cpp (78, 13)
+
+        LOOP BEGIN at main.cpp (79, 17)
+            remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+        LOOP END
+
+        LOOP BEGIN at main.cpp (79, 17)
+            remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+        LOOP END
+    LOOP END
+LOOP END
+
+LOOP BEGIN at main.cpp (166, 9)
     remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
 LOOP END
 
-LOOP BEGIN at main.cpp (165, 9)
+LOOP BEGIN at main.cpp (188, 9)
     remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
 LOOP END
 
-LOOP BEGIN at main.cpp (187, 9)
+LOOP BEGIN at main.cpp (150, 9)
     remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
 LOOP END
 
-LOOP BEGIN at main.cpp (117, 13)
+LOOP BEGIN at main.cpp (118, 13)
     remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
 LOOP END
 
-LOOP BEGIN at main.cpp (139, 17)
+LOOP BEGIN at main.cpp (140, 17)
 
-    LOOP BEGIN at main.cpp (140, 21)
+    LOOP BEGIN at main.cpp (141, 21)
         remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (141, 35) ] and [ /home/marek/knuth/main.cpp (141, 35) ] 
-        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (141, 35) ] and [ /home/marek/knuth/main.cpp (141, 35) ] 
-        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (141, 35) ] and [ /home/marek/knuth/main.cpp (141, 35) ] 
-        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (141, 35) ] and [ /home/marek/knuth/main.cpp (141, 35) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (142, 35) ] and [ /home/marek/knuth/main.cpp (142, 35) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (142, 35) ] and [ /home/marek/knuth/main.cpp (142, 35) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (142, 35) ] and [ /home/marek/knuth/main.cpp (142, 35) ] 
+        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (142, 35) ] and [ /home/marek/knuth/main.cpp (142, 35) ] 
     LOOP END
 
-    LOOP BEGIN at main.cpp (140, 21)
+    LOOP BEGIN at main.cpp (141, 21)
     <Remainder loop>
     LOOP END
 LOOP END
 
-LOOP BEGIN at main.cpp (94, 13)
+LOOP BEGIN at main.cpp (95, 13)
     remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
 LOOP END
 
-LOOP BEGIN at main.cpp (75, 9)
+LOOP BEGIN at main.cpp (247, 9)
 
-    LOOP BEGIN at main.cpp (77, 13)
+    LOOP BEGIN at main.cpp (248, 13)
+        remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+    LOOP END
 
-        LOOP BEGIN at main.cpp (78, 17)
-            remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
-        LOOP END
-
-        LOOP BEGIN at main.cpp (78, 17)
-            remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
-        LOOP END
+    LOOP BEGIN at main.cpp (248, 13)
     LOOP END
 LOOP END
 =================================================================
 
 Begin optimization report for: main.extracted
 
-LOOP BEGIN at main.cpp (191, 17)
+LOOP BEGIN at main.cpp (192, 17)
 
-    LOOP BEGIN at main.cpp (192, 21)
+    LOOP BEGIN at main.cpp (193, 21)
     LOOP END
 LOOP END
 
-LOOP BEGIN at main.cpp (188, 1)
+LOOP BEGIN at main.cpp (189, 9)
 
-    LOOP BEGIN at main.cpp (194, 17)
+    LOOP BEGIN at main.cpp (195, 17)
         remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-        LOOP BEGIN at main.cpp (195, 21)
+        LOOP BEGIN at main.cpp (196, 21)
             remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-            LOOP BEGIN at main.cpp (196, 25)
+            LOOP BEGIN at main.cpp (197, 25)
                 remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-                LOOP BEGIN at main.cpp (197, 29)
+                LOOP BEGIN at main.cpp (198, 29)
                     remark #15300: LOOP WAS VECTORIZED
                     remark #15305: vectorization support: vector length 8
-                    remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/marek/knuth/main.cpp (201, 41) ] 
-                    remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/marek/knuth/main.cpp (201, 41) ] 
-                    remark #15328: vectorization support: unmasked gather load: [ /home/marek/knuth/main.cpp (201, 41) ] 
+                    remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/marek/knuth/main.cpp (201, 53) ] 
+                    remark #15389: vectorization support: unmasked unaligned unit stride load: [ /home/marek/knuth/main.cpp (201, 53) ] 
+                    remark #15328: vectorization support: unmasked gather load: [ /home/marek/knuth/main.cpp (201, 53) ] 
                     remark #15475: --- begin vector loop cost summary ---
                     remark #15476: scalar cost: 9.000000 
                     remark #15477: vector cost: 3.765625 
@@ -187,62 +197,62 @@ LOOP BEGIN at main.cpp (188, 1)
                     remark #15567: Gathers are generated due to non-unit stride index of the corresponding loads.
                     remark #15474: --- end vector loop memory reference summary ---
                     remark #25587: Loop has reduction
-                    remark #15590: vectorization support: signed minimum reduction with value type int32_t [main.cpp:201:41]
+                    remark #15590: vectorization support: signed minimum reduction with value type int32_t [main.cpp:201:53]
                 LOOP END
 
-                LOOP BEGIN at main.cpp (197, 29)
+                LOOP BEGIN at main.cpp (198, 29)
                 <Remainder loop for vectorization>
                 LOOP END
             LOOP END
         LOOP END
     LOOP END
 
-    LOOP BEGIN at main.cpp (194, 17)
+    LOOP BEGIN at main.cpp (195, 17)
 
-        LOOP BEGIN at main.cpp (195, 21)
+        LOOP BEGIN at main.cpp (196, 21)
         LOOP END
     LOOP END
 
-    LOOP BEGIN at main.cpp (210, 17)
+    LOOP BEGIN at main.cpp (211, 17)
 
-        LOOP BEGIN at main.cpp (233, 25)
+        LOOP BEGIN at main.cpp (225, 25)
 
-            LOOP BEGIN at main.cpp (234, 29)
+            LOOP BEGIN at main.cpp (226, 29)
                 remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (235, 51) ] and [ /home/marek/knuth/main.cpp (235, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (235, 51) ] and [ /home/marek/knuth/main.cpp (235, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (235, 51) ] and [ /home/marek/knuth/main.cpp (235, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (235, 51) ] and [ /home/marek/knuth/main.cpp (235, 51) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (227, 51) ] and [ /home/marek/knuth/main.cpp (227, 51) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (227, 51) ] and [ /home/marek/knuth/main.cpp (227, 51) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (227, 51) ] and [ /home/marek/knuth/main.cpp (227, 51) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (227, 51) ] and [ /home/marek/knuth/main.cpp (227, 51) ] 
             LOOP END
 
-            LOOP BEGIN at main.cpp (234, 29)
+            LOOP BEGIN at main.cpp (226, 29)
             <Remainder loop>
             LOOP END
         LOOP END
 
-        LOOP BEGIN at main.cpp (212, 25)
+        LOOP BEGIN at main.cpp (213, 25)
 
-            LOOP BEGIN at main.cpp (213, 29)
+            LOOP BEGIN at main.cpp (214, 29)
                 remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (216, 51) ] and [ /home/marek/knuth/main.cpp (216, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (216, 49) ] and [ /home/marek/knuth/main.cpp (216, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (216, 49) ] and [ /home/marek/knuth/main.cpp (216, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (216, 49) ] and [ /home/marek/knuth/main.cpp (216, 51) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (215, 53) ] and [ /home/marek/knuth/main.cpp (215, 53) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (215, 51) ] and [ /home/marek/knuth/main.cpp (215, 53) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (215, 51) ] and [ /home/marek/knuth/main.cpp (215, 53) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (215, 51) ] and [ /home/marek/knuth/main.cpp (215, 53) ] 
             LOOP END
 
-            LOOP BEGIN at main.cpp (213, 29)
+            LOOP BEGIN at main.cpp (214, 29)
             <Remainder loop>
             LOOP END
 
-            LOOP BEGIN at main.cpp (226, 29)
+            LOOP BEGIN at main.cpp (220, 29)
                 remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (229, 51) ] and [ /home/marek/knuth/main.cpp (229, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (229, 49) ] and [ /home/marek/knuth/main.cpp (229, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (229, 49) ] and [ /home/marek/knuth/main.cpp (229, 51) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (229, 49) ] and [ /home/marek/knuth/main.cpp (229, 51) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (221, 52) ] and [ /home/marek/knuth/main.cpp (221, 52) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (221, 50) ] and [ /home/marek/knuth/main.cpp (221, 52) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (221, 50) ] and [ /home/marek/knuth/main.cpp (221, 52) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (221, 50) ] and [ /home/marek/knuth/main.cpp (221, 52) ] 
             LOOP END
 
-            LOOP BEGIN at main.cpp (226, 29)
+            LOOP BEGIN at main.cpp (220, 29)
             <Remainder loop>
             LOOP END
         LOOP END
@@ -252,26 +262,26 @@ LOOP END
 
 Begin optimization report for: main.extracted.18
 
-LOOP BEGIN at main.cpp (166, 1)
+LOOP BEGIN at main.cpp (167, 1)
 
-    LOOP BEGIN at main.cpp (166, 1)
+    LOOP BEGIN at main.cpp (167, 1)
         remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-        LOOP BEGIN at main.cpp (168, 17)
+        LOOP BEGIN at main.cpp (169, 17)
             remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-            LOOP BEGIN at main.cpp (169, 21)
+            LOOP BEGIN at main.cpp (170, 21)
                 remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-                LOOP BEGIN at main.cpp (170, 25)
+                LOOP BEGIN at main.cpp (171, 25)
                     remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (171, 43) ] and [ /home/marek/knuth/main.cpp (171, 43) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (171, 43) ] and [ /home/marek/knuth/main.cpp (171, 43) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (171, 43) ] and [ /home/marek/knuth/main.cpp (171, 43) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (171, 43) ] and [ /home/marek/knuth/main.cpp (171, 43) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (172, 43) ] and [ /home/marek/knuth/main.cpp (172, 43) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (172, 43) ] and [ /home/marek/knuth/main.cpp (172, 43) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (172, 43) ] and [ /home/marek/knuth/main.cpp (172, 43) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (172, 43) ] and [ /home/marek/knuth/main.cpp (172, 43) ] 
                 LOOP END
 
-                LOOP BEGIN at main.cpp (170, 25)
+                LOOP BEGIN at main.cpp (171, 25)
                 <Remainder loop>
                 LOOP END
             LOOP END
@@ -282,29 +292,29 @@ LOOP END
 
 Begin optimization report for: main.extracted.23
 
-LOOP BEGIN at main.cpp (150, 1)
+LOOP BEGIN at main.cpp (151, 1)
 
-    LOOP BEGIN at main.cpp (150, 1)
+    LOOP BEGIN at main.cpp (151, 1)
         remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-        LOOP BEGIN at main.cpp (152, 21)
+        LOOP BEGIN at main.cpp (153, 21)
             remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-            LOOP BEGIN at main.cpp (153, 25)
+            LOOP BEGIN at main.cpp (154, 25)
                 remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-                LOOP BEGIN at main.cpp (154, 29)
+                LOOP BEGIN at main.cpp (155, 29)
                     remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-                    LOOP BEGIN at main.cpp (155, 33)
+                    LOOP BEGIN at main.cpp (156, 33)
                         remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (156, 57) ] and [ /home/marek/knuth/main.cpp (156, 57) ] 
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (156, 57) ] and [ /home/marek/knuth/main.cpp (156, 57) ] 
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (156, 57) ] and [ /home/marek/knuth/main.cpp (156, 57) ] 
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (156, 57) ] and [ /home/marek/knuth/main.cpp (156, 57) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (157, 57) ] and [ /home/marek/knuth/main.cpp (157, 57) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (157, 57) ] and [ /home/marek/knuth/main.cpp (157, 57) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (157, 57) ] and [ /home/marek/knuth/main.cpp (157, 57) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (157, 57) ] and [ /home/marek/knuth/main.cpp (157, 57) ] 
                     LOOP END
 
-                    LOOP BEGIN at main.cpp (155, 33)
+                    LOOP BEGIN at main.cpp (156, 33)
                     <Remainder loop>
                     LOOP END
                 LOOP END
@@ -316,61 +326,61 @@ LOOP END
 
 Begin optimization report for: main.extracted.28
 
-LOOP BEGIN at main.cpp (118, 1)
+LOOP BEGIN at main.cpp (119, 1)
 
-    LOOP BEGIN at main.cpp (118, 1)
+    LOOP BEGIN at main.cpp (119, 1)
         remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-        LOOP BEGIN at main.cpp (120, 25)
+        LOOP BEGIN at main.cpp (121, 25)
             remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-            LOOP BEGIN at main.cpp (121, 29)
+            LOOP BEGIN at main.cpp (122, 29)
                 remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-                LOOP BEGIN at main.cpp (123, 37)
+                LOOP BEGIN at main.cpp (124, 37)
                     remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (124, 65) ] and [ /home/marek/knuth/main.cpp (124, 65) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (124, 65) ] and [ /home/marek/knuth/main.cpp (124, 65) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (124, 65) ] and [ /home/marek/knuth/main.cpp (124, 65) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (124, 65) ] and [ /home/marek/knuth/main.cpp (124, 65) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (125, 65) ] and [ /home/marek/knuth/main.cpp (125, 65) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (125, 65) ] and [ /home/marek/knuth/main.cpp (125, 65) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (125, 65) ] and [ /home/marek/knuth/main.cpp (125, 65) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (125, 65) ] and [ /home/marek/knuth/main.cpp (125, 65) ] 
                 LOOP END
 
-                LOOP BEGIN at main.cpp (123, 37)
+                LOOP BEGIN at main.cpp (124, 37)
                 <Remainder loop>
                 LOOP END
 
-                LOOP BEGIN at main.cpp (127, 45)
+                LOOP BEGIN at main.cpp (128, 45)
                     remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (128, 73) ] and [ /home/marek/knuth/main.cpp (128, 73) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (128, 73) ] and [ /home/marek/knuth/main.cpp (128, 73) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (128, 73) ] and [ /home/marek/knuth/main.cpp (128, 73) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (128, 73) ] and [ /home/marek/knuth/main.cpp (128, 73) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (129, 73) ] and [ /home/marek/knuth/main.cpp (129, 73) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (129, 73) ] and [ /home/marek/knuth/main.cpp (129, 73) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (129, 73) ] and [ /home/marek/knuth/main.cpp (129, 73) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (129, 73) ] and [ /home/marek/knuth/main.cpp (129, 73) ] 
                 LOOP END
 
-                LOOP BEGIN at main.cpp (129, 41)
+                LOOP BEGIN at main.cpp (130, 41)
                     remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (130, 69) ] and [ /home/marek/knuth/main.cpp (130, 69) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (130, 69) ] and [ /home/marek/knuth/main.cpp (130, 69) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (130, 69) ] and [ /home/marek/knuth/main.cpp (130, 69) ] 
-                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (130, 69) ] and [ /home/marek/knuth/main.cpp (130, 69) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (131, 69) ] and [ /home/marek/knuth/main.cpp (131, 69) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (131, 69) ] and [ /home/marek/knuth/main.cpp (131, 69) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (131, 69) ] and [ /home/marek/knuth/main.cpp (131, 69) ] 
+                    remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (131, 69) ] and [ /home/marek/knuth/main.cpp (131, 69) ] 
                 LOOP END
 
-                LOOP BEGIN at main.cpp (129, 41)
+                LOOP BEGIN at main.cpp (130, 41)
                 <Remainder loop>
                 LOOP END
 
-                LOOP BEGIN at main.cpp (133, 37)
+                LOOP BEGIN at main.cpp (134, 37)
                     remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-                    LOOP BEGIN at main.cpp (134, 41)
+                    LOOP BEGIN at main.cpp (135, 41)
                         remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (135, 70) ] and [ /home/marek/knuth/main.cpp (135, 70) ] 
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (135, 70) ] and [ /home/marek/knuth/main.cpp (135, 70) ] 
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (135, 70) ] and [ /home/marek/knuth/main.cpp (135, 70) ] 
-                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (135, 70) ] and [ /home/marek/knuth/main.cpp (135, 70) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (136, 70) ] and [ /home/marek/knuth/main.cpp (136, 70) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (136, 70) ] and [ /home/marek/knuth/main.cpp (136, 70) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (136, 70) ] and [ /home/marek/knuth/main.cpp (136, 70) ] 
+                        remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (136, 70) ] and [ /home/marek/knuth/main.cpp (136, 70) ] 
                     LOOP END
 
-                    LOOP BEGIN at main.cpp (134, 41)
+                    LOOP BEGIN at main.cpp (135, 41)
                     <Remainder loop>
                     LOOP END
                 LOOP END
@@ -382,24 +392,24 @@ LOOP END
 
 Begin optimization report for: main.extracted.33
 
-LOOP BEGIN at main.cpp (97, 1)
+LOOP BEGIN at main.cpp (98, 1)
     remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-    LOOP BEGIN at main.cpp (99, 21)
+    LOOP BEGIN at main.cpp (100, 21)
         remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-        LOOP BEGIN at main.cpp (100, 25)
+        LOOP BEGIN at main.cpp (101, 25)
             remark #15541: loop was not vectorized: outer loop is not an auto-vectorization candidate.
 
-            LOOP BEGIN at main.cpp (101, 29)
+            LOOP BEGIN at main.cpp (102, 29)
                 remark #15344: Loop was not vectorized: vector dependence prevents vectorization
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (102, 46) ] and [ /home/marek/knuth/main.cpp (102, 46) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (102, 46) ] and [ /home/marek/knuth/main.cpp (102, 46) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (102, 46) ] and [ /home/marek/knuth/main.cpp (102, 46) ] 
-                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (102, 46) ] and [ /home/marek/knuth/main.cpp (102, 46) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (103, 46) ] and [ /home/marek/knuth/main.cpp (103, 46) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (103, 46) ] and [ /home/marek/knuth/main.cpp (103, 46) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (103, 46) ] and [ /home/marek/knuth/main.cpp (103, 46) ] 
+                remark #15346: vector dependence: assumed FLOW dependence between [ /home/marek/knuth/main.cpp (103, 46) ] and [ /home/marek/knuth/main.cpp (103, 46) ] 
             LOOP END
 
-            LOOP BEGIN at main.cpp (101, 29)
+            LOOP BEGIN at main.cpp (102, 29)
             <Remainder loop>
             LOOP END
         LOOP END
