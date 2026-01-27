@@ -181,8 +181,8 @@ int main(int argc, char *argv[]){
         int bb = 32;
         for (int c0 = 0; c0 <= floord(N, bb); c0 += 1){
         #pragma omp parallel for
-            for (int c1 = c0; c1 <= min(N / bb, (N + 2 * c0 + 2) / 16 - 1); c1 += 1) {
-                int C[4][4];
+            for (int c1 = c0; c1 <= min(N / bb, (N + 2 * c0 - 2) / bb); c1 += 1) {
+                int C[bb][bb];
                 for (int i = 0; i < bb; i++)
                     for (int j = 0; j < bb; j++)
                         C[i][j] = INT_MAX;
