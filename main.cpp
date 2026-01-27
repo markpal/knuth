@@ -178,45 +178,45 @@ int main(int argc, char *argv[]){
     }
     if(kind == 6)  // ?
     {
-
-        for (int c0 = 0; c0 <= floord(N, 4); c0 += 1){
+        int bb = 32;
+        for (int c0 = 0; c0 <= floord(N, bb); c0 += 1){
         #pragma omp parallel for
-            for (int c1 = c0; c1 <= min(N / 4, (N + 2 * c0 + 2) / 4 - 1); c1 += 1) {
+            for (int c1 = c0; c1 <= min(N / bb, (N + 2 * c0 + 2) / 16 - 1); c1 += 1) {
                 int C[4][4];
-                for (int i = 0; i < 4; i++)
-                    for (int j = 0; j < 4; j++)
+                for (int i = 0; i < bb; i++)
+                    for (int j = 0; j < bb; j++)
                         C[i][j] = INT_MAX;
                 for (int c3 = -c0 + c1 + 1; c3 < c1; c3 += 1)
-                    for (int c4 = max(1, -4 * c0 + 4 * c1); c4 <= -4 * c0 + 4 * c1 + 3; c4 += 1)
-                        for (int c5 = 4 * c1; c5 <= min(N, 4 * c1 + 3); c5 += 1)
-                            for (int c6 = 4 * c3; c6 <= 4 * c3 + 3; c6 += 1)
+                    for (int c4 = max(1, -bb * c0 + bb * c1); c4 <= -bb * c0 + bb * c1 + bb-1; c4 += 1)
+                        for (int c5 = bb * c1; c5 <= min(N, bb * c1 + bb-1); c5 += 1)
+                            for (int c6 = bb * c3; c6 <= bb * c3 + bb-1; c6 += 1)
                            {
                                #ifdef VEC
-                                C[c4 % 4][c5 % 4] = MIN(C[c4 % 4][c5 % 4], w[c4][c5] + c[c4][c6] + c[c6][c5]);  // c[c4][c5]
+                                C[c4 % bb][c5 % bb] = MIN(C[c4 % bb][c5 % bb], w[c4][c5] + c[c4][c6] + c[c6][c5]);  // c[c4][c5]
                                #else
                                 c[c4][c5] = MIN(c[c4][c5], w[c4][c5] + c[c4][c6] + c[c6][c5]);
                                #endif
                             }
                 #ifdef VEC
                 if(c0 > 1) {
-                    c[(-c0 + c1) * 4 + 3][c1 * 4] = C[3][0]; // nie ma problematycznych
+                    c[(-c0 + c1) * bb + bb-1][c1 * bb] = C[3][0]; // nie ma problematycznych
                 }
                 #endif
-                for (int c4 = max(2, 4 * c0 - 2); c4 <= min(min(min(N - 1, 4 * c0 + 3), N + 4 * c0 - 4 * c1), 4 * c1 + 2); c4 += 1) {
+                for (int c4 = max(2, bb * c0 - (bb-2)); c4 <= min(min(min(N - 1, bb * c0 + bb-1), N + bb * c0 - bb * c1), bb * c1 + bb - 2); c4 += 1) {
                     if (c0 >= 1) {
-                        for (int c5 = max(max(4 * c1, -4 * c0 + 4 * c1 + c4), c4 + 1); c5 <= min(min(N, 4 * c1 + 3), -4 * c0 + 4 * c1 + c4 + 3); c5 += 1) {
-                            for (int c6 = -c4 + c5 + 1; c6 <= -4 * c0 + 4 * c1 + 3; c6 += 1) {
+                        for (int c5 = max(max(bb * c1, -bb * c0 + bb * c1 + c4), c4 + 1); c5 <= min(min(N, bb * c1 + bb-1), -bb * c0 + bb * c1 + c4 + bb-1); c5 += 1) {
+                            for (int c6 = -c4 + c5 + 1; c6 <= -bb * c0 + bb * c1 + bb-1; c6 += 1) {
                                   c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
                             #ifdef VEC
-                            c[-c4 + c5][c5] = MIN(C[(-c4 + c5) % 4][c5 % 4], c[-c4 + c5][c5]);
+                            c[-c4 + c5][c5] = MIN(C[(-c4 + c5) % bb][c5 % bb], c[-c4 + c5][c5]);
                             #endif
-                            for (int c6 = 4 * c1; c6 < c5; c6 += 1) {
+                            for (int c6 = bb * c1; c6 < c5; c6 += 1) {
                                  c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
                         }
                     } else {
-                        for (int c5 = max(4 * c1 + c4, c4 + 1); c5 <= min(N, 4 * c1 + 3); c5 += 1)
+                        for (int c5 = max(bb * c1 + c4, c4 + 1); c5 <= min(N, bb * c1 + bb-1); c5 += 1)
                             for (int c6 = -c4 + c5 + 1; c6 < c5; c6 += 1)
                                 c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                     }
