@@ -199,7 +199,7 @@ int main(int argc, char *argv[]){
                             }
                 #ifdef VEC
                 if(c0 > 1) {
-                    c[(-c0 + c1) * bb + bb-1][c1 * bb] = C[3][0]; // nie ma problematycznych
+                    c[(-c0 + c1) * bb + bb-1][c1 * bb] = C[bb-1][0]; // nie ma problematycznych
                 }
                 #endif
                 for (int c4 = max(2, bb * c0 - (bb-2)); c4 <= min(min(min(N - 1, bb * c0 + bb-1), N + bb * c0 - bb * c1), bb * c1 + bb - 2); c4 += 1) {
