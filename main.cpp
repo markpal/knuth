@@ -176,6 +176,36 @@ int main(int argc, char *argv[]){
             }
         }
     }
+
+if(kind == 7)
+{
+    /* TC Optimizing Compiler 0.5.1 */
+    /* ./tc ../examples/npdp/knt.scop.c --merge-tiling --free-scheduling --omp-for-codegen --iterative-tc --debug --align -b 16 */
+    
+    #pragma scop
+    if (n >= 17) {
+      for (register int k = 0; k <= (n - 1) / 16; k += 1) {
+        #pragma omp parallel for
+        for (register int ii0 = max(k - (n + 15) / 16, -((n + 12) / 16)); ii0 < 0; ii0 += 1) {
+          if (n + 3 * ii0 >= 14) {
+            for (register int i0 = max(max(-n + 3, 16 * ii0), -16 * k + 16 * ii0 + 3); i0 <= 16 * ii0 + 15; i0 += 1) {
+              for (register int i1 = max(16 * k - 16 * ii0 - 16, -i0 + 2); i1 < min(n, 16 * k - 16 * ii0); i1 += 1) {
+                for (register int i2 = -i0 + 1; i2 < i1; i2 += 1) {
+                  ck[-i0][i1] = MIN(ck[-i0][i1], (w[-i0][i1] + ck[-i0][i2]) + ck[i2][i1]);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    #pragma endscop
+
+
+}
+
+
+    
     if(kind == 6)  // ?
     {
         int bb = 32;
