@@ -177,7 +177,7 @@ int main(int argc, char *argv[]){
         }
     }
 
-if(kind == 7)
+if(kind == 8)
 {
     /* TC Optimizing Compiler 0.5.1 */
     /* ./tc ../examples/npdp/knt.scop.c --merge-tiling --free-scheduling --omp-for-codegen --iterative-tc --debug --align -b 16 */
