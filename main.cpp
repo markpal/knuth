@@ -205,6 +205,32 @@ if(kind == 8)
 }
 
 
+        if(kind == 7) // paper 3d tiled
+    {
+                for(int c0 = 2; c0 <= floord(19 * n - 22, 192) + 2; c0 += 1) {
+          #pragma omp parallel for
+          for (int c1 = max(max(-4 * c0 + 5, -((n + 11) / 12)),   -c0 - (n + 14) / 16 + 2); c1 <= min(-c0 + (n - 2) / 64 + 1,
+          -c0 + (3 * c0 - 4) / 19 + 1); c1 += 1) {
+           for (int c2 = max(-((4 * c0 + c1 + 15) / 20), -((n + 16 * c0 + 16 * c1 + 63) / 80)); c2 <= min(min(-1, -c0 - c1), -((4 * c0 +
+           c1 + 29) / 36)); c2 += 1) {
+            for (int c5 = max(max(2, -64 * c2 - 63), 8 * c0 + 2 * c1 + 8 * c2 - 12); c5 <= min(min(min(min(n - 1, -12 * c1 - 1),
+            -64 * c2), 16 * c0 + 4 * c1 + 16 * c2), n + 16 * c0 + 16 * c1 + 16 * c2); c5 += 1) {
+             for (int c6 = max(max(1, -16 * c0 - 16 * c1 - 16 * c2), -12 * c1 - 2 * c5 - 9); c6 <= min(min(-16 * c0 - 16 * c1 -
+             16 * c2 + 15, -12 * c1 - c5), n - c5); c6 += 1) {
+              for (int c7 = max(-12 * c1 - 11, c5 + c6); c7 <=  min(min(n, -12 * c1), 2 * c5 + c6 - 2); c7 += 1) {
+               if (2 * c5 + c6 >= c7 + 3) {
+                c[c6][c7] = MIN(c[c6][c7],w[c6][c7] + c[c6][-c5 + c7 + 1] + c[-c5 + c7 + 1][c7]);
+               }
+               c[c6][c7] = MIN(c[c6][c7], w[c6][c7] + c[c6][c5 + c6 - 1] + c[c5 + c6 - 1][c7]);
+              }
+             }
+            }
+           }
+          }
+                }
+    }
+
+
     
     if(kind == 6)  // ?
     {
