@@ -232,59 +232,59 @@ if(kind == 8)
 
 
     
-    if(kind == 6)  // ?
+     if(kind == 6)  // ?
     {
-        int bb = 32;
-        for (int c0 = 0; c0 <= floord(N, bb); c0 += 1){
+        int b = 32;
+        for (int c0 = 0; c0 <= floord(N, b); c0 += 1){
+        int ub = min(N / b, floord(N + 2 * c0 - 2, b));
         #pragma omp parallel for
-            for (int c1 = c0; c1 <= min(N / bb, (N + 2 * c0 - 2) / bb); c1 += 1) {
-                int C[bb][bb];
-                for (int i = 0; i < bb; i++)
-                    for (int j = 0; j < bb; j++)
+          for (int c1 = c0; c1 <= ub; c1 += 1) {
+                int C[b][b];
+                for (int i = 0; i < b; i++)
+                    for (int j = 0; j < b; j++)
                         C[i][j] = INT_MAX;
-                for (int c3 = -c0 + c1 + 1; c3 < c1; c3 += 1)
-                    for (int c4 = max(1, -bb * c0 + bb * c1); c4 <= -bb * c0 + bb * c1 + bb-1; c4 += 1)
-                        for (int c5 = bb * c1; c5 <= min(N, bb * c1 + bb-1); c5 += 1)
-                            for (int c6 = bb * c3; c6 <= bb * c3 + bb-1; c6 += 1)
-                           {
+                    for (int c3 = -c0 + c1 + 1; c3 < c1; c3 += 1)
+      for (int c4 = max(1, -b * c0 + b * c1); c4 <= -b * c0 + b * c1 + b - 1; c4 += 1)
+          for (int c5 = b * c1; c5 <= min(N, b * c1 + (b-1)); c5 += 1)
+             for (int c6 = b * c3; c6 <= b * c3 + b - 1; c6 += 1)
+                            {
                                #ifdef VEC
-                                C[c4 % bb][c5 % bb] = MIN(C[c4 % bb][c5 % bb], w[c4][c5] + c[c4][c6] + c[c6][c5]);  // c[c4][c5]
+                                C[c4 % b][c5 % b] = MIN(C[c4 % b][c5 % b], w[c4][c5] + c[c4][c6] + c[c6][c5]);  // c[c4][c5]
                                #else
                                 c[c4][c5] = MIN(c[c4][c5], w[c4][c5] + c[c4][c6] + c[c6][c5]);
                                #endif
                             }
                 #ifdef VEC
                 if(c0 > 1) {
-                    c[(-c0 + c1) * bb + bb-1][c1 * bb] = C[bb-1][0]; // nie ma problematycznych
+                   c[(-c0 + c1) * b + b-1][c1 * b] = MIN(C[b-1][0], c[(-c0 + c1) * b + b-1][c1 * b]); // nie ma problematycznych
                 }
                 #endif
-                for (int c4 = max(2, bb * c0 - (bb-2)); c4 <= min(min(min(N - 1, bb * c0 + bb-1), N + bb * c0 - bb * c1), bb * c1 + bb - 2); c4 += 1) {
+                      for (int c4 = max(2, b * c0 - (b-2)); c4 <= min(min(min(N - 1, b * c0 + b-1), N + b * c0 - b * c1), b * c1 + b-2); c4 += 1) {
                     if (c0 >= 1) {
-                        for (int c5 = max(max(bb * c1, -bb * c0 + bb * c1 + c4), c4 + 1); c5 <= min(min(N, bb * c1 + bb-1), -bb * c0 + bb * c1 + c4 + bb-1); c5 += 1) {
-                            for (int c6 = -c4 + c5 + 1; c6 <= -bb * c0 + bb * c1 + bb-1; c6 += 1) {
+        for (int c5 = max(max(b * c1, -b * c0 + b * c1 + c4), c4 + 1); c5 <= min(min(N, b * c1 + b-1), -b * c0 + b * c1 + c4 + b-1); c5 += 1) {
+                            for (int c6 = -c4 + c5 + 1; c6 <= -b * c0 + b * c1 + b-1; c6 += 1) {
                                   c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
                             #ifdef VEC
-                            c[-c4 + c5][c5] = MIN(C[(-c4 + c5) % bb][c5 % bb], c[-c4 + c5][c5]);
+
+                            c[-c4 + c5][c5] = MIN(C[(-c4 + c5) % b][c5 % b], c[-c4 + c5][c5]);
                             #endif
-                            for (int c6 = bb * c1; c6 < c5; c6 += 1) {
+                            for (int c6 = b * c1; c6 < c5; c6 += 1){
                                  c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                             }
                         }
                     } else {
-                        for (int c5 = max(bb * c1 + c4, c4 + 1); c5 <= min(N, bb * c1 + bb-1); c5 += 1)
-                            for (int c6 = -c4 + c5 + 1; c6 < c5; c6 += 1)
+            for (int c5 = max(b * c1 + c4, c4 + 1); c5 <= min(N, b * c1 + b-1); c5 += 1)
+                 for (int c6 = -c4 + c5 + 1; c6 < c5; c6 += 1)
                                 c[-c4 + c5][c5] = MIN(c[-c4 + c5][c5], w[-c4 + c5][c5] + c[-c4 + c5][c6] + c[c6][c5]);
                     }
                 }
             }
 
 
-
+}
 }
 
-
-    }
 
     printf("\033[0m\n");
 
